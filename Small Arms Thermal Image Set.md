@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Small Arms Thermal Image Set
-description: Lorem ipsum dolor est
+description: Detection of Small Arms Using as Novel Dataset
 image: assets/images/pic11.jpg
 nav-menu: true
 ---
