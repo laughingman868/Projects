@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Generic
+title: FLIR ADAS Object Detection
 description: Lorem ipsum dolor est
 image: assets/images/pic11.jpg
 nav-menu: true
