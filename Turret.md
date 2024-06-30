@@ -2,7 +2,7 @@
 layout: post
 title: Turret
 description: Place Holder
-image: assets/images/pic11.jpg
+image:
 nav-menu: true
 ---
 
