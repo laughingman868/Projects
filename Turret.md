@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Small Arms Thermal Image Set
+title: Turret
 description: Lorem ipsum dolor est
 image: assets/images/pic11.jpg
 nav-menu: true
