@@ -5,10 +5,10 @@
 ///
 
 /* Import base styles */
-@import "base";
+@import "../base/page";
 
-/* Import page-specific styles */
-@import "base/page";
+/* Import other base styles if any */
+@import "../base/typography";
 
 /* Main */
 
