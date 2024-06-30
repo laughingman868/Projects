@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Turret
-description: Lorem ipsum dolor est
+description: Place Holder
 image: assets/images/pic11.jpg
 nav-menu: true
 ---
