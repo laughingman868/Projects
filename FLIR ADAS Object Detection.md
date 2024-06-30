@@ -10,7 +10,8 @@ nav-menu: true
 ![Super Resolution Example](assets/images/super_resolution_only.jpg)
 
 
-Example code:
+Here is an example code block:
+
 ```python
 def hello_world():
     print("Hello, World!")
