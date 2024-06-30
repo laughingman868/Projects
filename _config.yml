@@ -3,7 +3,7 @@ title: Projects
 subtitle: by Brenon Tate
 email: 
 description:
-baseurl: "/test" # the subpath of your site, e.g. /blog
+baseurl: "/Projects" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
 ##street_address:
