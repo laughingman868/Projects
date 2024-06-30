@@ -2,7 +2,7 @@
 layout: post
 title: FLIR ADAS Object Detection
 description: Lorem ipsum dolor est
-image: assets/images/pic11.jpg
+image: assets/images/super_resolution_only.jpg
 nav-menu: true
 ---
 
