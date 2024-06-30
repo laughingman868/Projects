@@ -1,0 +1,44 @@
+# site settings
+title: Projects
+subtitle: by Brenon Tate
+email: 
+description:
+baseurl: "/Projects" # the subpath of your site, e.g. /blog
+url: # the base hostname & protocol for your site
+author:
+##street_address:
+##city:
+##state:
+##zip_code:
+##country:
+##phone:
+
+# homepage tiles
+tiles-source: pages # accepts "posts" or "pages"
+tiles-count: 6
+
+# social settings (key must match name of font awesome icon)
+# see https://fontawesome.com/icons?d=gallery&p=2&s=brands
+# Icons are not shown if value is empty
+# You need to restart jekyll for changes to have an effect
+socials:
+  GitHub: https://github.com/laughingman868
+  GitLab:
+  Google-Plus:
+  Instagram:
+  LinkedIn:
+  Twitter:
+  Facebook:
+  Slack:
+
+# build settings
+markdown: kramdown
+
+sass:
+  style: compressed
+
+exclude:
+- "*.gemspec"
+- LICENSE.md
+- CONTRIBUTING.md
+- README.md 
