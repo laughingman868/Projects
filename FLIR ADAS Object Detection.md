@@ -1,7 +1,7 @@
 ---
 layout: post
 title: FLIR ADAS Object Detection
-description: Lorem ipsum dolor est
+description: PyTorch Object Detection Using The FLIR ADAS Image Set
 image: assets/images/super_resolution_only.jpg
 nav-menu: true
 ---
