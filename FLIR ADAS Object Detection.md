@@ -7,7 +7,7 @@ nav-menu: true
 ---
 
 
-![Super Resolution Example](assets/images/super_resolution_only.jpg)
+##![Super Resolution Example](assets/images/super_resolution_only.jpg)
 
 
 Here is an example code block:
