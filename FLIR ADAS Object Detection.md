@@ -12,7 +12,7 @@ nav-menu: true
 The FLIR ADAS set contains...
 
 Import the required packages:
-```
+```python
 import pathlib
 import torch
 import torchvision
