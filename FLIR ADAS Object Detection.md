@@ -68,7 +68,7 @@ for _ in range(3):
     image, target = dataset[index]
     display_image_with_boxes(image, target['boxes'])
 ```
-![Super Resolution Example](assets/images/FLIR_ADAS_sample.png)
+![Flir ADAS Sample](assets/images/FLIR_ADAS_sample.png)
 
 This code loads a Faster R-CNN model with ResNet 50 weights, creates an optimizer and scheduler, then does some error handling for batches that contain images with no bounding boxes. There is for sure a more elegant way of doing this, but this was a quick and temporary work around. 
 ```python
