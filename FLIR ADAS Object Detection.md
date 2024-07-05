@@ -5,10 +5,6 @@ description: PyTorch Object Detection Using The FLIR ADAS Image Set
 image: assets/images/super_resolution_only.jpg
 nav-menu: true
 ---
-
-<!--
-![Super Resolution Example](assets/images/super_resolution_only.jpg)
--->
 The FLIR ADAS set contains...
 
 Import the required packages:
