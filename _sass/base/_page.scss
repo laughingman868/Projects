@@ -68,3 +68,12 @@ pre code .s {
 pre code .c {
     color: #5c6370; /* Comments */
 }
+
+/* Add custom styles for import statements and package names */
+pre code .token.keyword {
+    color: #c678dd; /* Customize the color for keywords (import statements) */
+}
+
+pre code .token.package {
+    color: #61afef; /* Customize the color for package names */
+}
