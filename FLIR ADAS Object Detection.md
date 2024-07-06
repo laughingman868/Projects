@@ -146,6 +146,120 @@ torch.save({
 
 print(f"Model state dictionary and optimizer state saved at {MODEL_STATE_DICT_PATH}")
 ```
+This project spanned multiple days so it was necessary to load the saved model
+```python
+MODEL_SAVE_PATH = pathlib.Path(r"C:\Users\Brenon\Desktop\complete_model.pth")
+
+# Set up the device to use GPU if available, otherwise use CPU
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Load the entire model and components
+checkpoint = torch.load(MODEL_SAVE_PATH, map_location=device)
+
+# Restore the model
+model = checkpoint['model']
+model.load_state_dict(checkpoint['model_state_dict'])
+model = model.to(device)
+
+optimizer = torch.optim.SGD(model.parameters(), lr=0.005, momentum=0.9, weight_decay=0.0005)
+scheduler = StepLR(optimizer, step_size=3, gamma=0.1)
+
+# Load the optimizer and scheduler states
+optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
+
+# Ensure the model is in the correct mode, e.g., training or evaluation
+# model.train()  # Use if continuing training
+model.eval()   # Use if performing evaluation
+
+print("Model, optimizer, and scheduler have been successfully loaded and are ready to use.")
+```
+I decided to use Fiftyone for inference and visualization
+```python
+import fiftyone.utils.coco as fouc
+import fiftyone as fo
+
+# Path to the directory where the images are stored
+dataset_dir = r"C:\Users\Brenon\Desktop\FLIR_Thermal_Dataset\FLIR_ADAS_v2\video_thermal_test"
+
+# Path to the COCO formatted JSON file
+annotations_path = r"C:\Users\Brenon\Desktop\FLIR_Thermal_Dataset\FLIR_ADAS_v2\video_thermal_test\coco_test.json"
+
+# Load the dataset
+dataset = fo.Dataset.from_dir(
+    dataset_type=fo.types.COCODetectionDataset,
+    data_path=dataset_dir,
+    labels_path=annotations_path,
+    name="flir_dataset_test"
+)
+```
+This will run inference on 100 images and bring up the Fiftyone interface for inspection
+```python
+from PIL import Image
+import torch
+from torchvision.transforms import functional as F
+
+# Set up the device to use GPU if available
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Assuming the dataset has been loaded as 'dataset'
+# Take a random subset of 100 samples for predictions
+predictions_view = dataset.take(100, seed=51)
+
+# Get class list (assuming your dataset has default classes defined)
+classes = dataset.default_classes
+
+print("Number of classes:", len(classes))
+
+# Add predictions to samples
+with fo.ProgressBar() as pb:
+    for sample in pb(predictions_view):
+        # Load image
+        image = Image.open(sample.filepath)
+        image_tensor = F.to_tensor(image).to(device)
+        c, h, w = image_tensor.shape  # c, h, and w are the channel, height, and width
+
+        # Perform inference
+        preds = model([image_tensor])[0]
+        labels = preds['labels'].cpu().detach().numpy()
+        scores = preds['scores'].cpu().detach().numpy()
+        boxes = preds['boxes'].cpu().detach().numpy()
+
+        print("Predicted labels:", labels)  # Check what labels are being predicted
+
+        # Convert detections to FiftyOne format
+        detections = []
+        for label, score, box in zip(labels, scores, boxes):
+            if label < len(classes):  # Check if label is within the valid range
+                x1, y1, x2, y2 = box
+                rel_box = [x1 / w, y1 / h, (x2 - x1) / w, (y2 - y1) / h]
+
+                detections.append(
+                    fo.Detection(
+                        label=classes[label],
+                        bounding_box=rel_box,
+                        confidence=score,
+                        color="red"
+                    )
+                )
+            else:
+                print("Label index out of range:", label)  # Print out-of-range label
+
+        # Save predictions to dataset
+        sample["predictions"] = fo.Detections(detections=detections)
+        sample.save()
+
+# Update the session to view the predictions
+session = fo.launch_app(view=predictions_view)
+```
+
+
+
+
+
+
+
+
 
 
 
