@@ -5,7 +5,11 @@ description: PyTorch Object Detection Using The FLIR ADAS Image Set
 image: assets/images/super_resolution_only.jpg
 nav-menu: true
 ---
-The FLIR ADAS set contains...
+The FLIR ADAS dataset is structured into three main categories: training images ("train"), validation images ("val"), and validation videos ("val_video"). The images and video frames were sampled from independent video sequences to enhance model generalization. The dataset includes 9,711 thermal and 9,233 RGB training/validation images, split 90%/10% between train and val sets, along with 7,498 validation video frames. Each of the 3,749 thermal/RGB video pairs contains continuous frames captured at 30 frames per second (FPS), with time-synced frames mapped between the thermal and RGB spectrums in the rgb_to_thermal_vid_map.json file. Data was collected in diverse locations under various lighting and weather conditions. More detailed information can be found in the "extra_info" section of the coco.json annotations.
+
+The dataset was captured using a thermal and visible camera pair mounted on a vehicle, with thermal images captured by a Teledyne FLIR Tau 2 camera and visible images by a Teledyne FLIR BlackFly S camera. Time-synced capture was managed by Teledyne FLIR's Guardian software. Validation videos, collected at 30 FPS, include target IDs for tracking metrics like MOTA/MOTP. Frames were selected for diversity, excluding redundant footage. Annotations are provided in Conservator JSON format for Teledyne FLIR's proprietary tool and COCO format for training, with COCO-formatted files recommended for training models. The dataset uses a modified MSCOCO label map inspired by the Berkeley Deep Drive dataset, covering categories like person, bike, car, motor, bus, train, truck, light, hydrant, sign, dog, skateboard, stroller, scooter, and other vehicles. Detailed annotation counts for thermal and visible images are also provided.
+
+This dataset can be downloaded for free using the following link: https://www.flir.com/oem/adas/adas-dataset-form/
 
 Import the required packages:
 ```python
