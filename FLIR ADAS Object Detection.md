@@ -252,7 +252,8 @@ with fo.ProgressBar() as pb:
 # Update the session to view the predictions
 session = fo.launch_app(view=predictions_view)
 ```
-
+The image below shows a screen shot of the Fiftyone interface. The detections and segmentations fields are the original annotations, and the predictions are from the inference. Right clicking the names allows the confidence to be adjusted via slider, and a custom color can be used as well.
+![Fiftyone](assets/images/Fiftyone_capture.png)
 
 
 
