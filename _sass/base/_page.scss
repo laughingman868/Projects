@@ -36,3 +36,44 @@ body {
     }
 }
 
+/* Custom styles for code blocks */
+pre {
+    background: #282c34; /* Dark background */
+    color: #abb2bf; /* Light text color */
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+code {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Specific styles for Rouge syntax highlighting */
+pre code .kn { /* Keywords */
+    color: #c678dd; /* Purple */
+}
+
+pre code .nn { /* Names (like package names) */
+    color: #61afef; /* Blue */
+}
+
+pre code .s { /* Strings */
+    color: #98c379; /* Green */
+}
+
+pre code .c { /* Comments */
+    color: #5c6370; /* Grey */
+}
+
+/* Additional custom styles if needed */
+pre code .kp { /* Keywords - import statements */
+    color: #c678dd;
+}
+
+pre code .nb { /* Builtins */
+    color: #e06c75;
+}
