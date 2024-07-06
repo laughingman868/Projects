@@ -53,11 +53,11 @@ code {
 }
 
 /* Specific styles for Rouge syntax highlighting */
-pre code .kn { /* Keywords */
+pre code .k, pre code .kn { /* Keywords */
     color: #c678dd; /* Purple */
 }
 
-pre code .nn { /* Names (like package names) */
+pre code .nn, pre code .n { /* Names (like package names, variables) */
     color: #61afef; /* Blue */
 }
 
@@ -65,8 +65,24 @@ pre code .s { /* Strings */
     color: #98c379; /* Green */
 }
 
-pre code .c { /* Comments */
+pre code .c, pre code .c1 { /* Comments */
     color: #5c6370; /* Grey */
+}
+
+pre code .mi { /* Numbers */
+    color: #d19a66; /* Orange */
+}
+
+pre code .o { /* Operators */
+    color: #56b6c2; /* Cyan */
+}
+
+pre code .p { /* Punctuation */
+    color: #abb2bf; /* Light text color */
+}
+
+pre code .nt { /* Tags (for XML/HTML) */
+    color: #e06c75; /* Red */
 }
 
 /* Additional custom styles if needed */
