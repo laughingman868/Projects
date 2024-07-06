@@ -21,7 +21,7 @@ from torchvision import models, datasets, transforms
 from torchvision.datasets import CocoDetection
 from torchvision.models.detection import FasterRCNN_ResNet50_FPN_Weights
 ```
-Load the data and ensure that cuda is using my GPU rather than the CPU
+Load the data and ensure that cuda is using my GPU rather than the CPU.
 ```python
 IMAGES_PATH = pathlib.Path(r"C:\Users\Brenon\Desktop\FLIR_Thermal_Dataset\FLIR_ADAS_v2\images_thermal_train")
 ANNOTATIONS_PATH = IMAGES_PATH / "coco_train.json"
@@ -50,7 +50,7 @@ data_loader = torch.utils.data.DataLoader(
     collate_fn=lambda batch: tuple(zip(*batch)),
 )
 ```
-Display three random images from the data, one of the three is shown below
+Display three random images from the data, one of the three is shown below.
 ```python
 def display_image_with_boxes(image, boxes):
     fig, ax = plt.subplots(1)
@@ -116,7 +116,7 @@ for batch_idx, (imgs, targets) in enumerate(data_loader):
         print(f"Error processing batch {batch_idx + 1}: {str(e)}")
         continue  # Skip to the next batch
 ```
-Save the model to use for inference later
+Save the model to use for inference later.
 ```python
 # Define a path for saving the entire model
 COMPLETE_MODEL_SAVE_PATH = pathlib.Path(r"C:\Users\Brenon\Desktop\complete_model.pth")
@@ -146,7 +146,7 @@ torch.save({
 
 print(f"Model state dictionary and optimizer state saved at {MODEL_STATE_DICT_PATH}")
 ```
-This project spanned multiple days so it was necessary to load the saved model
+This project spanned multiple days so it was necessary to load the saved model.
 ```python
 MODEL_SAVE_PATH = pathlib.Path(r"C:\Users\Brenon\Desktop\complete_model.pth")
 
@@ -174,7 +174,7 @@ model.eval()   # Use if performing evaluation
 
 print("Model, optimizer, and scheduler have been successfully loaded and are ready to use.")
 ```
-I decided to use Fiftyone for inference and visualization
+I decided to use Fiftyone for inference and visualization.
 ```python
 import fiftyone.utils.coco as fouc
 import fiftyone as fo
@@ -193,7 +193,7 @@ dataset = fo.Dataset.from_dir(
     name="flir_dataset_test"
 )
 ```
-This will run inference on 100 images and bring up the Fiftyone interface for inspection
+This will run inference on 100 images and bring up the Fiftyone interface for inspection.
 ```python
 from PIL import Image
 import torch
@@ -252,7 +252,7 @@ with fo.ProgressBar() as pb:
 # Update the session to view the predictions
 session = fo.launch_app(view=predictions_view)
 ```
-The image below shows a screen shot of the Fiftyone interface. The detections and segmentations fields are the original annotations, and the predictions are from the inference. Right clicking the names allows the confidence to be adjusted via slider, and a custom color can be used as well.
+The image below shows a screen shot of the Fiftyone interface. The detections and segmentations fields are the original annotations, and the predictions are from the inference. Right clicking the names allows the confidence to be adjusted via slider, and a custom color can be set as well.
 
 ![fiftyone_capture](assets/images/fiftyone_capture.JPG)
 
